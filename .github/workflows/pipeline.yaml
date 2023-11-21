@@ -11,6 +11,7 @@ on:
 
 env:
   SAM_TEMPLATE: template.yaml
+  HELLO_PACKAGE: hello-world/package.json
   TESTING_STACK_NAME: aws-sam-cli-managed-rc-pipeline-resources
   TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::429249706241:role/aws-sam-cli-managed-rc-pipeli-PipelineExecutionRole-vZX0dEscGOPE
   TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::429249706241:role/aws-sam-cli-managed-rc-pi-CloudFormationExecutionRo-F9cHTiCTCnFo
@@ -82,7 +83,7 @@ jobs:
       - uses: aws-actions/setup-sam@v2
         with:
           use-installer: true
-      - run: sam build --template ${SAM_TEMPLATE} --use-container
+      - run: sam build --template ${SAM_TEMPLATE} --manifest ${HELLO_PACKAGE} --use-container
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -114,7 +115,7 @@ jobs:
           use-installer: true
 
       - name: Build resources
-        run: sam build --template ${SAM_TEMPLATE} --use-container
+        run: sam build --template ${SAM_TEMPLATE} --manifest ${HELLO_PACKAGE} --use-container
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v1-node16
