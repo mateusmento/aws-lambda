@@ -11,6 +11,7 @@ on:
 
 env:
   SAM_TEMPLATE: template.yaml
+  HELLO_PACKAGE: hello-world/package.json
   TESTING_STACK_NAME: qa
   TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::429249706241:role/aws-sam-cli-managed-qa-pipeli-PipelineExecutionRole-lnx6h28mBwh7
   TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::429249706241:role/aws-sam-cli-managed-qa-pi-CloudFormationExecutionRo-zy9gS4ad7wZG
